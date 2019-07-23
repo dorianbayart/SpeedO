@@ -19,7 +19,6 @@ function getLocation() {
     navigator.geolocation.watchPosition(showPosition, locationError);
   } else {
     console.log("Geo Location not supported by browser");
-	
   }
 }
 //function that retrieves the position
