@@ -48,7 +48,7 @@ main {
 	z-index: 1000;
 	top: calc(env(safe-area-inset-top) + 0px);
 	padding: 8px 8px 0;
-	background-color: rgba(250, 250, 250, 0.95);
+	// background-color: rgba(250, 250, 250, 0.95);
 }
 
 .row {
@@ -106,6 +106,10 @@ h5, h6 {
 .big-text {
 	font-size: 6rem;
 	font-weight: 600;
+}
+
+.larger-text {
+	font-size: larger;
 }
 
 i.left {
