@@ -42,14 +42,16 @@ function showPosition(position) {
 }
 
 function updateScreen(location) {
-	const vitesse = Math.round(location.speed * 3600 / 1000);
-	console.log(vitesse);
+	const vitesse = Math.round(location.speed * 3600 / 1000); // m/s to km/h
 	$('#vitesse').text( vitesse );
 	
-	$('#latitude').text( location.latitude );
-	$('#longitude').text( location.longitude );
-	$('#altitude').text( location.altitude );
-	$('#timestamp').text( location.timestamp );
+	$('#latitude').text( mathRound5(location.latitude) );
+	$('#longitude').text( mathRound5(location.longitude) );
+	$('#altitude').text( Math.round(location.altitude) + ' m' );
+	
+	const dateStamp = new Date(location.timestamp);
+	const hourStamp = dateStamp.getHours() + ':' + dateStamp.getMinutes() + ':' + dateStamp.getSeconds();
+	$('#hourstamp').text( hourStamp );
 }
 
 
@@ -69,4 +71,8 @@ function locationError(error) {
             break;
     }
 	$('#gps_icon').text( 'gps_off' );
+}
+
+function mathRound5(x) { // round with 5 decimals
+	return Math.round(100000. * x) / 100000.;
 }
