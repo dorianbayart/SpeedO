@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="canonical" href="https://dorianbayart.github.io/SpeedO/">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no, viewport-fit=cover" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="icon" type="image/png" href="icon.png" />
+
+	<title>SpeedO</title>
+	<meta name="Description" content="Visualisez votre vitesse avec SpeedO." />
+	
+	<!-- Progressive Web App -->
+	<meta name="apple-mobile-web-app-title" content="SpeedO">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="mobile-web-app-capable" content="yes" />
+	<!-- Logos -->
+	<!--<link rel="apple-touch-icon" href="icon.png">-->
+	
+	<!--<link rel="apple-touch-startup-image" href="logo_startup.png" />-->
+	<!--
+	<link href="splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	-->
+
+
+
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="design.css">
+
+	<!-- TODO add manifest here -->
+
+</head>
+<body ontouchstart="">
+	
+	<div class="navbar-fixed">
+		<nav class="nav-extended">
+			<div class="">
+			
+			
+			<div class="row">
+				<div class="col s12 valign-wrapper">
+					<i id="gps_icon" class="material-icons left">gps_not_fixed</i>
+				</div>
+				
+			</div>
+			
+			</div>
+		</nav>
+	</div>
+	
+	<main class="page-main">
+		<div id="card-speed" class="container">
+			<div class="card-panel">
+				<div class="row center-align">
+					<div class="col s12">
+						<div class="big-text">
+							<span id="vitesse">0</span>
+							
+						</div>
+						<span id="unit" class="right">km/h</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="card-details" class="container">
+			<div class="card-panel">
+				<div class="row">
+					<div class="col s12">
+						<div class="">
+							<span id="data-details"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+	<footer class="page-footer">
+		<div class="row">
+			<div class="col s6 left-align">
+				<span id="title" class="">
+					<a href="https://github.com/dorianbayart/SpeedO" target="blank">
+						SpeedO
+					</a>
+				</span>
+			</div>
+			<div class="col s6 right-align">
+				<span id="favorites" class="favoritesButton">Favorites</span>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>
+
+
+
+
+<!-- Compiled and minified JavaScript -->
+<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">

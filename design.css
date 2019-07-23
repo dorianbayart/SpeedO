@@ -1,0 +1,182 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	font-family: Roboto,sans-serif;
+	
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+/* Helpers */
+.no-padding-left {
+	padding-left: 0 !important;
+}
+.no-padding-right {
+	padding-right: 0 !important;
+}
+
+
+.navbar-fixed {
+	height: 40px;
+	margin-bottom: calc(env(safe-area-inset-top));
+}
+
+.nav-extended, .page-footer {
+	background-color: #ee6e73f2;
+	padding-top: calc(env(safe-area-inset-top));
+}
+
+.page-footer {
+	padding-top: 0; /* overrides 20px */
+	padding-bottom: env(safe-area-inset-bottom);
+}
+
+#title a, #copyright a {
+	color: inherit;
+}
+
+#card-speed {
+	position: -webkit-sticky;
+	position: -moz-sticky;
+	position: -ms-sticky;
+	position: -o-sticky;
+	position: sticky;
+	z-index: 1000;
+	top: calc(env(safe-area-inset-top) + 44px);
+}
+
+.row {
+	margin-bottom: 0;
+}
+
+.row .col {
+	// padding: unset;
+	padding: 0 .25rem;
+}
+
+nav > * > .row .col div {
+	width: 100%;
+}
+
+nav > * > .row {
+	line-height: initial;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+}
+
+nav > * > .row > * > .material-icons {
+	line-height: initial;
+	font-size: initial;
+	height: unset;
+}
+
+.card-title .material-icons {
+	margin-right: 1rem;
+}
+
+.level {
+	font-size: small;
+	margin-left: 0.4em;
+}
+
+.card.horizontal .card-content {
+	// padding-left: 1rem;
+}
+.card.horizontal .card-image {
+	min-width: 15%;
+}
+.card.horizontal .card-image i {
+	margin: auto;
+}
+
+.card .card-action {
+	padding: 6px 24px; /* overrides 16px 24px */
+}
+	
+.btn-small {
+	display: inline-flex;
+	vertical-align: middle;
+}
+
+h5, h6 {
+	margin-top: 0;
+}
+
+.big-text {
+	font-size: 10rem;
+}
+
+i.left {
+	margin-right: 0.5rem; /* overrides 15px */
+}
+
+#tip_recolteManuelle {
+	margin: 0 -1rem 0.4rem;
+}
+
+.clic_gains {
+	display: inline-flex;
+	align-items: center;
+	width: 100%;
+	justify-content: flex-end;
+}
+
+
+/* Phones */
+@media only screen and (max-width: 600px) {
+	body {
+		/* font-size: 12px; */
+	}
+	
+	.card, .card-panel {
+		margin-top: 0.2rem;
+		margin-bottom: 0.4rem; /* overrides 1rem */
+	}
+
+	.card-panel {
+		padding: 6px; /* overrides 24px */
+	}
+	
+	.card .card-content, .card > * > .card-action {
+		padding: 6px 12px; /* overrides 16px 24px */
+	}
+	
+	.card .card-content .card-title {
+		font-size: larger;
+		line-height: unset; /* overrides 32px */
+		margin-bottom: 0; /* overrides 8px */
+	}
+	
+	.blockquote {
+		margin: 10px 0;
+	}
+	
+	.btn-small {
+		height: 24px;
+		line-height: 24px;
+		padding: 0 6px; /* overrides 0 16px */
+		font-size: xx-small;
+	}
+}
+
+/* Big screens */
+@media only screen and (min-width: 601px) {
+	.navbar-fixed {
+		font-size: larger;
+		height: 32px;
+	}
+	
+	nav > * > .row {
+		display: flex;
+	}
+	
+	#card-recolte {
+		top: 36px;
+	}
+}
