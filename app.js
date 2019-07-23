@@ -28,7 +28,7 @@ function showPosition(position) {
 	altitude: position.coords.altitude,
     longitude: position.coords.longitude,
     latitude: position.coords.latitude,
-	speed: 8.2,
+	speed: position.coords.speed,
 	timestamp: position.timestamp
   }
   console.log(position);
