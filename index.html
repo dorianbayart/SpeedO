@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no, viewport-fit=cover" />
 	<meta name="format-detection" content="telephone=no">
 
-	<link rel="icon" type="image/png" href="ico_128.png" />
+	<link rel="icon" type="image/png" href="ico_48.png" />
 
 	<title>SpeedO</title>
 	<meta name="Description" content="Visualisez votre vitesse avec SpeedO." />
@@ -18,9 +18,9 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta name="mobile-web-app-capable" content="yes" />
 	<!-- Logos -->
-	<link rel="apple-touch-icon" href="ico_512.png">
+	<link rel="apple-touch-icon" href="ico_128.png">
 	
-	<link rel="apple-touch-startup-image" href="ico_512_launch.png" />
+	<link rel="apple-touch-startup-image" href="ico_512.png" />
 	<!--
 	<link href="splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
 	<link href="splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
@@ -43,58 +43,59 @@
 	<!-- TODO add manifest here -->
 
 </head>
-<body ontouchstart="" class="deep-purple darken-4 grey-text text-lighten-5">
+<body ontouchstart="" class="indigo darken-3 grey-text text-lighten-5">
 	
 	<main class="page-main">
-		<div id="card-speed" class="container">
-				<div class="row">
-					<div class="col s1">
-						<i id="gps_icon" class="material-icons">gps_not_fixed</i>
-					</div>
-					<div class="col s8 right-align">
-						<div class="big-text">
-							<div id="vitesse">0</div>
-						</div>
-					</div>
-					<div class="col s3">
-						<div id="unit" class="larger-text">km/h</div>
+		<div id="card-speed" class="container indigo darken-4">
+			<div class="row">
+				<div class="col s1">
+					<i id="gps_icon" class="material-icons">gps_not_fixed</i>
+				</div>
+				<div class="col s8 right-align">
+					<div class="big-text">
+						<div id="vitesse">0</div>
 					</div>
 				</div>
+				<div class="col s3">
+					<div id="unit" class="larger-text">km/h</div>
+				</div>
+			</div>
 		</div>
 		
 		<div id="card-details" class="container">
-				<div class="row">
-					<div class="col s6">
-						<span class="hide-on-large-only">Lat.: </span>
-						<span class="hide-on-med-and-down">Latitude: </span>
-						<span id="latitude"></span>
-					</div>
-					<div class="col s6">
-						<span class="hide-on-large-only">Long.: </span>
-						<span class="hide-on-med-and-down">Longitude: </span>
-						<span id="longitude"></span>
+			<div class="row">
+				<div class="col s6">
+					<span class="hide-on-large-only">Lat.: </span>
+					<span class="hide-on-med-and-down">Latitude: </span>
+					<span id="latitude"></span>
+				</div>
+				<div class="col s6">
+					<span class="hide-on-large-only">Long.: </span>
+					<span class="hide-on-med-and-down">Longitude: </span>
+					<span id="longitude"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s6">
+					<span class="hide-on-large-only">Alt.: </span>
+					<span class="hide-on-med-and-down">Altitude: </span>
+					<span id="altitude"></span>
+				</div>
+				<div class="col s6">
+					<span class="">Update: </span>
+					<span id="hourstamp"></span>
+				</div>
+			</div>
+		</div>
+		
+		<div id="card-other" class="container">
+			<div class="row">
+				<div class="col s12">
+					<div class="">
+						<div id="data-details"></div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col s6">
-						<span class="hide-on-large-only">Alt.: </span>
-						<span class="hide-on-med-and-down">Altitude: </span>
-						<span id="altitude"></span>
-					</div>
-					<div class="col s6">
-						<span class="hide-on-large-only">Time.: </span>
-						<span class="hide-on-med-and-down">Timestamp: </span>
-						<span id="timestamp"></span>
-					</div>
-				</div>
-				<hr>
-				<div class="row">
-					<div class="col s12">
-						<div class="">
-							<div id="data-details"></div>
-						</div>
-					</div>
-				</div>
+			</div>
 		</div>
 	</main>
 	
