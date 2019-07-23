@@ -43,12 +43,12 @@
 	<!-- TODO add manifest here -->
 
 </head>
-<body ontouchstart="">
+<body ontouchstart="" class="deep-purple darken-4 grey-text text-lighten-5">
 	
 	<main class="page-main">
 		<div id="card-speed" class="container">
 				<div class="row">
-					<div class="col s2">
+					<div class="col s1">
 						<i id="gps_icon" class="material-icons">gps_not_fixed</i>
 					</div>
 					<div class="col s8 right-align">
@@ -56,13 +56,38 @@
 							<div id="vitesse">0</div>
 						</div>
 					</div>
-					<div class="col s2">
-						<div id="unit" class="">km/h</div>
+					<div class="col s3">
+						<div id="unit" class="larger-text">km/h</div>
 					</div>
 				</div>
 		</div>
 		
 		<div id="card-details" class="container">
+				<div class="row">
+					<div class="col s6">
+						<span class="hide-on-large-only">Lat.: </span>
+						<span class="hide-on-med-and-down">Latitude: </span>
+						<span id="latitude"></span>
+					</div>
+					<div class="col s6">
+						<span class="hide-on-large-only">Long.: </span>
+						<span class="hide-on-med-and-down">Longitude: </span>
+						<span id="longitude"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s6">
+						<span class="hide-on-large-only">Alt.: </span>
+						<span class="hide-on-med-and-down">Altitude: </span>
+						<span id="altitude"></span>
+					</div>
+					<div class="col s6">
+						<span class="hide-on-large-only">Time.: </span>
+						<span class="hide-on-med-and-down">Timestamp: </span>
+						<span id="timestamp"></span>
+					</div>
+				</div>
+				<hr>
 				<div class="row">
 					<div class="col s12">
 						<div class="">
