@@ -1,10 +1,7 @@
 
-
 $.when( $.ready ).then(function() {
 	
 	initialize();
-	
-	
 	
 });
 
@@ -16,9 +13,15 @@ function initialize() {
 //function that gets the location and returns it
 function getLocation() {
   if(navigator.geolocation) {
-    navigator.geolocation.watchPosition(showPosition, locationError);
+	const options = {
+		enableHighAccuracy: true,
+		timeout: 5000,
+		maximumAge: 1000,
+		accuracy: 10
+	};
+    navigator.geolocation.watchPosition(showPosition, locationError, options);
   } else {
-    console.log("Geo Location not supported by browser");
+	console.log("Geo Location not supported by browser");
   }
 }
 //function that retrieves the position
@@ -42,6 +45,11 @@ function updateScreen(location) {
 	const vitesse = Math.round(location.speed * 3600 / 1000);
 	console.log(vitesse);
 	$('#vitesse').text( vitesse );
+	
+	$('#latitude').text( location.latitude );
+	$('#longitude').text( location.longitude );
+	$('#altitude').text( location.altitude );
+	$('#timestamp').text( location.timestamp );
 }
 
 
