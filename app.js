@@ -1,3 +1,7 @@
+speedHistory = [];
+speedAverage = 0;
+speedAccuracy = 3;
+
 
 $.when( $.ready ).then(function() {
 	
@@ -15,8 +19,8 @@ function getLocation() {
   if(navigator.geolocation) {
 	const options = {
 		enableHighAccuracy: true,
-		timeout: 5000,
-		maximumAge: 1000,
+		timeout: 3000,
+		maximumAge: 500,
 		accuracy: 10
 	};
     navigator.geolocation.watchPosition(showPosition, locationError, options);
@@ -33,24 +37,42 @@ function showPosition(position) {
 	speed: position.coords.speed,
 	timestamp: position.timestamp
   }
-  console.log(position);
-  console.log(location);
+  
+  if(location.speed) {
+	speedHistory.push(location.speed);
+  }
+  
   $('#data-details').html( JSON.stringify(location, null, '<br>') );
   $('#gps_icon').text( 'gps_fixed' );
   
   updateScreen(location);
 }
 
+function calculateSpeed(accuracy) {
+	let speed = 0;
+	if(speedHistory.length >= accuracy) {
+		speed = speedHistory.slice(speedHistory.length - accuracy).reduce((speed, spd) => speed + spd);
+		return Math.round(speed * 3600 / 1000);
+	}
+	else {
+		return last(speedHistory) ? Math.round(last(speedHistory) * 3600 / 1000) : 0;
+	}
+}
 function updateScreen(location) {
-	const vitesse = Math.round(location.speed * 3600 / 1000); // m/s to km/h
+	
+	const vitesse = calculateSpeed(speedAccuracy);
 	$('#vitesse').text( vitesse );
+	console.log(speedHistory);
 	
 	$('#latitude').text( mathRound5(location.latitude) );
 	$('#longitude').text( mathRound5(location.longitude) );
 	$('#altitude').text( Math.round(location.altitude) + ' m' );
 	
 	const dateStamp = new Date(location.timestamp);
-	const hourStamp = dateStamp.getHours() + ':' + dateStamp.getMinutes() + ':' + dateStamp.getSeconds();
+	const hours = dateStamp.getHours() < 10 ? '0'+dateStamp.getHours() : dateStamp.getHours();
+	const minutes = dateStamp.getMinutes() < 10 ? '0'+dateStamp.getMinutes() : dateStamp.getMinutes();
+	const seconds = dateStamp.getSeconds() < 10 ? '0'+dateStamp.getSeconds() : dateStamp.getSeconds();
+	const hourStamp = hours + ':' + minutes + ':' + seconds;
 	$('#hourstamp').text( hourStamp );
 }
 
@@ -75,4 +97,8 @@ function locationError(error) {
 
 function mathRound5(x) { // round with 5 decimals
 	return Math.round(100000. * x) / 100000.;
+}
+
+function last(array) {
+    return array[array.length - 1];
 }
