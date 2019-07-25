@@ -63,7 +63,18 @@
 		</div>
 		
 		<div id="card-details" class="container">
-			<div class="row">
+			<div class="row valign-wrapper">
+				<div class="col s6">
+					<span class="hide-on-large-only">Alt.: </span>
+					<span class="hide-on-med-and-down">Altitude: </span>
+					<span id="altitude" class="larger-text"></span>
+				</div>
+				<div class="col s6">
+					<span class="">Time: </span>
+					<span id="hourstamp" class="larger-text"></span>
+				</div>
+			</div>
+			<div class="row valign-wrapper">
 				<div class="col s6">
 					<span class="hide-on-large-only">Lat.: </span>
 					<span class="hide-on-med-and-down">Latitude: </span>
@@ -75,25 +86,29 @@
 					<span id="longitude"></span>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col s6">
-					<span class="hide-on-large-only">Alt.: </span>
-					<span class="hide-on-med-and-down">Altitude: </span>
-					<span id="altitude"></span>
-				</div>
-				<div class="col s6">
-					<span class="">Update: </span>
-					<span id="hourstamp"></span>
-				</div>
-			</div>
 		</div>
 		
-		<div id="card-other" class="container">
-			<div class="row">
+		<div id="card-statistics" class="container indigo darken-4">
+			<div class="row valign-wrapper">
+				<div class="col s12 center-align">
+					<span class="">Vitesse</span>
+				</div>
+			</div>
+			<div class="row valign-wrapper">
+				<div class="col s6">
+					<span class="hide-on-large-only">Moy.: </span>
+					<span class="hide-on-med-and-down">Moyenne: </span>
+					<span id="average"></span>
+				</div>
+				<div class="col s6">
+					<span class="hide-on-large-only">Max.: </span>
+					<span class="hide-on-med-and-down">Maximale: </span>
+					<span id="maximal"></span>
+				</div>
+			</div>
+			<div class="row valign-wrapper">
 				<div class="col s12">
-					<div class="">
-						<div id="data-details"></div>
-					</div>
+					<span id="history"></span>
 				</div>
 			</div>
 		</div>
