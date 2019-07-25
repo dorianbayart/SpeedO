@@ -34,7 +34,7 @@ function showPosition(position) {
 	altitude: position.coords.altitude,
     longitude: position.coords.longitude,
     latitude: position.coords.latitude,
-	speed: Math.random()*8,//position.coords.speed,
+	speed: position.coords.speed,
 	timestamp: position.timestamp
   }
   
