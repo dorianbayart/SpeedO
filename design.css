@@ -17,8 +17,9 @@ main {
 	width: 100%;
 }
 
-#card-details {
+#card-statistics {
 	margin: 1em auto;
+	padding: 0.5em;
 }
 
 /* Helpers */
@@ -115,8 +116,6 @@ h5, h6 {
 
 .larger-text {
 	font-size: x-large;
-	top: 1.8rem;
-    position: relative;
 }
 
 i.left {
