@@ -34,7 +34,7 @@ function showPosition(position) {
 	altitude: position.coords.altitude,
     longitude: position.coords.longitude,
     latitude: position.coords.latitude,
-	speed: position.coords.speed,
+	speed: Math.random()*8,//position.coords.speed,
 	timestamp: position.timestamp
   }
   
@@ -51,7 +51,7 @@ function showPosition(position) {
 function calculateSpeed(accuracy) {
 	let speed = 0;
 	if(speedHistory.length >= accuracy) {
-		speed = speedHistory.slice(speedHistory.length - accuracy).reduce((speed, spd) => speed + spd);
+		speed = speedHistory.slice(speedHistory.length - accuracy).reduce((speed, spd) => speed + spd) / accuracy;
 		return Math.round(speed * 3600 / 1000);
 	}
 	else {
