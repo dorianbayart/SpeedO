@@ -13,15 +13,6 @@ main {
 	flex: 1 0 auto;
 }
 
-#card-speed.container {
-	width: 100%;
-}
-
-#card-statistics {
-	margin: 1em auto;
-	padding: 0.5em;
-}
-
 /* Helpers */
 .no-padding-left {
 	padding-left: 0 !important;
@@ -44,6 +35,9 @@ main {
 	color: inherit;
 }
 
+#card-speed.container {
+	width: 100%;
+}
 #card-speed {
 	position: -webkit-sticky;
 	position: -moz-sticky;
@@ -54,6 +48,15 @@ main {
 	top: calc(env(safe-area-inset-top) + 0px);
 	padding: 8px 8px 0;
 	// background-color: rgba(250, 250, 250, 0.95);
+}
+
+#card-details {
+	margin-top: calc(env(safe-area-inset-top) + 0px);
+}
+
+#card-statistics {
+	margin: 1em auto;
+	padding: 0.5em;
 }
 
 .row {
