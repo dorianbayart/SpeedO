@@ -1,5 +1,6 @@
-speedHistory = [];
+historic = [];
 speedAverage = 0;
+speedMax = 0;
 speedAccuracy = 3;
 
 
@@ -19,11 +20,14 @@ function getLocation() {
   if(navigator.geolocation) {
 	const options = {
 		enableHighAccuracy: true,
-		timeout: 3000,
-		maximumAge: 500,
-		accuracy: 10
+		timeout: 1000,
+		maximumAge: 1000
 	};
-    navigator.geolocation.watchPosition(showPosition, locationError, options);
+    //navigator.geolocation.watchPosition(showPosition, locationError, options);
+	
+	setInterval(() => {
+		navigator.geolocation.getCurrentPosition(showPosition, locationError, options);
+	}, 500);
   } else {
 	console.log("Geo Location not supported by browser");
   }
@@ -38,9 +42,11 @@ function showPosition(position) {
 	timestamp: position.timestamp
   }
   
-  if(location.speed) {
-	speedHistory.push(location.speed);
-  }
+  //if(location.speed) {
+	historic.push(location);
+  //}
+  
+  speedMax = location.speed > speedMax ? location.speed : speedMax;
   
   $('#data-details').html( JSON.stringify(location, null, '<br>') );
   $('#gps_icon').text( 'gps_fixed' );
@@ -50,19 +56,26 @@ function showPosition(position) {
 
 function calculateSpeed(accuracy) {
 	let speed = 0;
-	if(speedHistory.length >= accuracy) {
-		speed = speedHistory.slice(speedHistory.length - accuracy).reduce((speed, spd) => speed + spd) / accuracy;
-		return Math.round(speed * 3600 / 1000);
+	if(historic.length >= accuracy) {
+		speed = historic.slice(historic.length - accuracy).reduce((speed, h) => speed + h.speed) / accuracy;
+		return speed > 0 ? Math.round(speed * 3600. / 1000) : 0;
 	}
 	else {
-		return last(speedHistory) ? Math.round(last(speedHistory) * 3600 / 1000) : 0;
+		return last(historic) ? Math.round(last(historic).speed * 3600. / 1000) : 0;
 	}
+	// return last(historic) ? Math.round(last(historic).speed * 3600. / 1000) : 0;
+}
+function calculateMax(speedMax) {
+	return Math.round( speedMax * 3600. / 1000);
 }
 function updateScreen(location) {
 	
 	const vitesse = calculateSpeed(speedAccuracy);
 	$('#vitesse').text( vitesse );
-	console.log(speedHistory);
+	// console.log(historic);
+	
+	const vitesseMax = calculateMax(speedMax);
+	$('#maximal').text( vitesseMax );
 	
 	$('#latitude').text( mathRound5(location.latitude) );
 	$('#longitude').text( mathRound5(location.longitude) );
