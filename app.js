@@ -1,6 +1,11 @@
 historic = [];
-speedAverage = 0;
-speedMax = 0;
+
+trip = {
+	startTime: 0,
+	speedAverage: 0,
+	speedMax: 0,
+	duration: 0
+}
 speedAccuracy = 3;
 
 
@@ -38,20 +43,12 @@ function showPosition(position) {
 	altitude: position.coords.altitude,
     longitude: position.coords.longitude,
     latitude: position.coords.latitude,
-	speed: position.coords.speed,
+	speed: position.coords.speed ? position.coords.speed : 0,
 	timestamp: position.timestamp
   }
   
-  //if(location.speed) {
-	historic.push(location);
-  //}
-  
-  speedMax = location.speed > speedMax ? location.speed : speedMax;
-  
-  $('#data-details').html( JSON.stringify(location, null, '<br>') );
+  updateTrip(location);
   $('#gps_icon').text( 'gps_fixed' );
-  
-  updateScreen(location);
 }
 
 function calculateSpeed(accuracy) {
@@ -63,19 +60,37 @@ function calculateSpeed(accuracy) {
 	else {
 		return last(historic) ? Math.round(last(historic).speed * 3600. / 1000) : 0;
 	}*/
-	return last(historic) ? Math.round(last(historic).speed * 3600. / 1000) : 0;
+	return Math.round(last(historic).speed * 3600. / 1000) : 0;
 }
-function calculateMax(speedMax) {
-	return Math.round( speedMax * 3600. / 1000);
+function calculateMax() {
+	const lastLocation = last(historic);
+	trip.speedMax = lastLocation.speed > trip.speedMax ? lastLocation.speed : trip.speedMax;
+}
+function calculateAverage() {
+	const lastLocation = last(historic);
+	const time = lastLocation.timestamp;
+	const previousLocation = historic[historic.length - 2];
+	const previousTime = previousLocation.timestamp;
+	const diffTime = (time - previousTime) / 1000;
+	const speed = lastLocation.speed;
+	trip.speedAverage = (trip.duration * trip.speedAverage + diffTime * speed) / (trip.duration + diffTime);
+}
+function updateTrip() {
+	historic.push(location);
+	if(historic.length === 1) {
+		trip.startTime = location.timestamp;
+	}
+	calculateMax();
+	calculateAverage();
+	trip.duration = (location.timestamp - trip.startTime) / 1000;
+	
+	updateScreen(location);
 }
 function updateScreen(location) {
 	
-	const vitesse = calculateSpeed(speedAccuracy);
-	$('#vitesse').text( vitesse );
-	// console.log(historic);
-	
-	const vitesseMax = calculateMax(speedMax);
-	$('#maximal').text( vitesseMax );
+	$('#vitesse').text( Math.round( last(historic).speed * 3600. / 1000) );
+	$('#average').text( Math.round( trip.speedAverage * 3600. / 1000) );
+	$('#maximal').text( Math.round( trip.speedMax * 3600. / 1000) );
 	
 	$('#latitude').text( mathRound5(location.latitude) );
 	$('#longitude').text( mathRound5(location.longitude) );
