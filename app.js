@@ -5,7 +5,7 @@ trip = {
 	speedAverage: 0,
 	speedMax: 0,
 	duration: 0
-}
+};
 speedAccuracy = 3;
 
 
