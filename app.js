@@ -75,7 +75,7 @@ function calculateAverage() {
 	const speed = lastLocation.speed;
 	trip.speedAverage = (trip.duration * trip.speedAverage + diffTime * speed) / (trip.duration + diffTime);
 }
-function updateTrip() {
+function updateTrip(location) {
 	historic.push(location);
 	console.log(historic);
 	
