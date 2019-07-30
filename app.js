@@ -60,7 +60,7 @@ function calculateSpeed(accuracy) {
 	else {
 		return last(historic) ? Math.round(last(historic).speed * 3600. / 1000) : 0;
 	}*/
-	return Math.round(last(historic).speed * 3600. / 1000) : 0;
+	return Math.round(last(historic).speed * 3600. / 1000);
 }
 function calculateMax() {
 	const lastLocation = last(historic);
