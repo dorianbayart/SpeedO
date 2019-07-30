@@ -21,7 +21,7 @@ function getLocation() {
 	const options = {
 		enableHighAccuracy: true,
 		timeout: 1000,
-		maximumAge: 1000
+		maximumAge: 0
 	};
     //navigator.geolocation.watchPosition(showPosition, locationError, options);
 	
