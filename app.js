@@ -95,7 +95,7 @@ function updateTrip(location) {
 function updateScreen(location) {
 	
 	$('#vitesse').text( Math.round( last(historic).speed * 3600. / 1000) );
-	$('#duration').text( trip.duration );
+	$('#duration').text( Math.round( trip.duration ) );
 	$('#average').text( Math.round( trip.speedAverage * 3600. / 1000) );
 	$('#maximal').text( Math.round( trip.speedMax * 3600. / 1000) );
 	
