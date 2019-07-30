@@ -77,7 +77,6 @@ function calculateAverage() {
 }
 function updateTrip(location) {
 	historic.push(location);
-	console.log(historic);
 	
 	if(historic.length === 1) {
 		trip.startTime = location.timestamp;
