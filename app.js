@@ -77,11 +77,17 @@ function calculateAverage() {
 }
 function updateTrip() {
 	historic.push(location);
+	
 	if(historic.length === 1) {
 		trip.startTime = location.timestamp;
 	}
+	
 	calculateMax();
-	calculateAverage();
+	
+	if(historic.length > 1) {
+		calculateAverage();
+	}
+	
 	trip.duration = (location.timestamp - trip.startTime) / 1000;
 	
 	updateScreen(location);
