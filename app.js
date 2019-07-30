@@ -56,14 +56,14 @@ function showPosition(position) {
 
 function calculateSpeed(accuracy) {
 	let speed = 0;
-	if(historic.length >= accuracy) {
+	/*if(historic.length >= accuracy) {
 		speed = historic.slice(historic.length - accuracy).reduce((speed, h) => speed + h.speed) / accuracy;
 		return speed > 0 ? Math.round(speed * 3600. / 1000) : 0;
 	}
 	else {
 		return last(historic) ? Math.round(last(historic).speed * 3600. / 1000) : 0;
-	}
-	// return last(historic) ? Math.round(last(historic).speed * 3600. / 1000) : 0;
+	}*/
+	return last(historic) ? Math.round(last(historic).speed * 3600. / 1000) : 0;
 }
 function calculateMax(speedMax) {
 	return Math.round( speedMax * 3600. / 1000);
