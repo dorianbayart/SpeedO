@@ -73,7 +73,9 @@ function calculateAverage() {
 	const previousTime = previousLocation.timestamp;
 	const diffTime = (time - previousTime) / 1000;
 	const speed = lastLocation.speed;
-	trip.speedAverage = (trip.duration * trip.speedAverage + diffTime * speed) / (trip.duration + diffTime);
+	if(trip.duration + diffTime > 0) {
+		trip.speedAverage = (trip.duration * trip.speedAverage + diffTime * speed) / (trip.duration + diffTime);
+	}
 }
 function updateTrip(location) {
 	historic.push(location);
