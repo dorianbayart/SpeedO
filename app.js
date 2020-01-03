@@ -26,13 +26,14 @@ function getLocation() {
 	const options = {
 		enableHighAccuracy: true,
 		timeout: 1000,
-		maximumAge: 0
+		maximumAge: 1000
 	};
-    //navigator.geolocation.watchPosition(showPosition, locationError, options);
+    	
+	navigator.geolocation.watchPosition(showPosition, locationError, options);
 	
-	setInterval(() => {
+	/*setInterval(() => {
 		navigator.geolocation.getCurrentPosition(showPosition, locationError, options);
-	}, 500);
+	}, 500);*/
   } else {
 	console.log("Geo Location not supported by browser");
   }
