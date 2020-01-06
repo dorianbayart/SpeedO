@@ -114,11 +114,11 @@ function updateScreen(location) {
 	}
 	
 	if( trip.duration > 120 ) {
+		$('#duration').text( Math.round( trip.duration / 60 ) );
+		$('#duration_unit').text( 'min' );
+	} else {
 		$('#duration').text( Math.round( trip.duration ) );
 		$('#duration_unit').text( 'sec' );
-	} else {
-		$('#duration').text( Math.round( trip.duration / 60 ) );
-		$('#distance_unit').text( 'min' );
 	}
 	
 	
