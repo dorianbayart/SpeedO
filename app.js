@@ -1,4 +1,5 @@
 historic = [];
+max_historic_items = 100;
 
 trip = {
 	startTime: 0,
@@ -90,6 +91,9 @@ function updateTrip(location) {
 	if(historic.length > 1) {
 		calculateAverage();
 	}
+	if(historic.length > max_historic_items) {
+		historic.shift();
+	}
 	
 	trip.duration = (location.timestamp - trip.startTime) / 1000;
 	
@@ -98,9 +102,25 @@ function updateTrip(location) {
 function updateScreen(location) {
 	
 	$('#vitesse').text( Math.round( last(historic).speed * 3600. / 1000) );
-	$('#duration').text( Math.round( trip.duration ) );
 	$('#average').text( Math.round( trip.speedAverage * 3600. / 1000) );
 	$('#maximal').text( Math.round( trip.speedMax * 3600. / 1000) );
+	
+	if( Math.round( trip.speedAverage * trip.duration ) > 1000 ) {
+		$('#distance').text( Math.round( trip.speedAverage * trip.duration / 1000 ) );
+		$('#distance_unit').text( 'km' );
+	} else {
+		$('#distance').text( Math.round( trip.speedAverage * trip.duration ) );
+		$('#distance_unit').text( 'm' );
+	}
+	
+	if( trip.duration > 120 ) {
+		$('#duration').text( Math.round( trip.duration ) );
+		$('#duration_unit').text( 'sec' );
+	} else {
+		$('#duration').text( Math.round( trip.duration / 60 ) );
+		$('#distance_unit').text( 'min' );
+	}
+	
 	
 	$('#latitude').text( mathRound5(location.latitude) );
 	$('#longitude').text( mathRound5(location.longitude) );
