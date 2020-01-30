@@ -106,10 +106,10 @@ function updateScreen(location) {
 	$('#maximal').text( Math.round( trip.speedMax * 3600. / 1000) );
 	
 	if( Math.round( trip.speedAverage * trip.duration ) > 1000 ) {
-		$('#distance').text( Math.round( trip.speedAverage * trip.duration / 1000 ) );
+		$('#distance').text( Math.floor( trip.speedAverage * trip.duration / 1000 ) );
 		$('#distance_unit').text( 'km' );
 	} else {
-		$('#distance').text( Math.round( trip.speedAverage * trip.duration ) );
+		$('#distance').text( Math.floor( trip.speedAverage * trip.duration ) );
 		$('#distance_unit').text( 'm' );
 	}
 	
